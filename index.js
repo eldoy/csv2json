@@ -58,7 +58,7 @@ module.exports = async function (input, output) {
 
         rl.output.write(content, function () {
           if (done) {
-            resolve()
+            resolve({ count })
           }
         })
       }
