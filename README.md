@@ -4,7 +4,7 @@ CSV2JSON converter. Only works for smallish files with headers, no streaming sup
 
 ### Usage
 
-````sh
+```sh
 node csv2json.js inputfile.csv [outputfile.json]
 ```
 
