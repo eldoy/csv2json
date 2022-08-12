@@ -19,7 +19,9 @@ npm i -g csvstrom
 Programmatically:
 ```js
 const csvstrom = require('csvstrom')
-await csvstrom('codes.csv', 'codes.json')
+
+// Returns the number of lines processed
+const { count } = await csvstrom('codes.csv', 'codes.json')
 ```
 
 Command line usage:
