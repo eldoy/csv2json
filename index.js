@@ -17,6 +17,9 @@ function getCount(input) {
 }
 
 module.exports = async function (input, output) {
+  if (!output) {
+    output = input.replace(/\.csv$/, '.json')
+  }
   let fields,
     total,
     count = 0
