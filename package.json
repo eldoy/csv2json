@@ -1,7 +1,7 @@
 {
   "name": "csvstrom",
   "version": "0.1.1",
-  "description": "CSV to JSON converter",
+  "description": "Streaming CSV to JSON converter",
   "main": "index.js",
   "bin": {
     "csvstrom": "bin/csvstrom.js"

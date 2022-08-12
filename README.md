@@ -1,6 +1,6 @@
-# CSV2JSON
+# CSVStrom
 
-CSV2JSON converter. Streaming support so it works well for large files.
+Streaming CSV to JSON converter. Works well for large files.
 
 CLI is included.
 
