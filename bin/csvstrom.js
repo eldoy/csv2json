@@ -1,4 +1,4 @@
-const assert = require('assert')
+#!/usr/bin/env node
 const csvstrom = require('../index.js')
 
 const input = process.argv[2]
