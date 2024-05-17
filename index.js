@@ -1,37 +1,21 @@
-const fs = require('fs')
-const readline = require('readline')
-const exec = require('child_process').exec
+var fs = require('fs')
+var readline = require('readline')
 
-// Get line count
-function getCount(input) {
-  const command = `sed '/^$/d' ${input} | awk '{print NR}' | sort -nr | sed -n '1p'`
-  return new Promise(function (resolve, reject) {
-    exec(command, function (err, count) {
-      if (err) {
-        reject(err)
-      } else {
-        resolve(parseInt(count.trim()))
-      }
-    })
-  })
-}
+var getCount = require('./lib/getCount.js')
+var csv2string = require('./lib/csv2string.js')
 
 module.exports = async function (input, output) {
   if (!output) {
     output = input.replace(/\.csv$/, '.json')
   }
-  let fields,
+  var fields,
     total,
     count = 0
-  try {
-    total = await getCount(input)
-  } catch (e) {
-    console.error(e)
-    process.exit(1)
-  }
+
+  total = await getCount(input)
 
   return new Promise(function (resolve) {
-    const rl = readline.createInterface({
+    var rl = readline.createInterface({
       input: fs.createReadStream(input),
       output: fs.createWriteStream(output)
     })
@@ -39,23 +23,23 @@ module.exports = async function (input, output) {
     rl.on('line', function (line) {
       if (!line.trim()) return
       count++
-      const values = line.split(';').map((x) => x.trim())
+      var values = line.split(';').map((x) => x.trim())
       if (!fields) {
         rl.output.write(`[\n`)
         fields = values
       } else {
-        const item = {}
-        for (let i = 0; i < fields.length; i++) {
-          item[fields[i]] = values[i]
+        var item = {}
+        for (var i = 0; i < fields.length; i++) {
+          item[fields[i]] = csv2string(values[i])
         }
-        const result = JSON.stringify(item, null, 2)
+        var result = JSON.stringify(item, null, 2)
           .split('\n')
           .map((x) => `  ${x}`)
           .join('\n')
 
-        const done = count >= total
+        var done = count >= total
 
-        const content = [result, done ? '' : ',', '\n', done ? ']\n' : ''].join(
+        var content = [result, done ? '' : ',', '\n', done ? ']\n' : ''].join(
           ''
         )
 

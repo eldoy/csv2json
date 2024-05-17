@@ -7,7 +7,7 @@
     "csvstrom": "bin/csvstrom.js"
   },
   "scripts": {
-    "test": "node test/run.js"
+    "test": "node spec/run.js"
   },
   "repository": {
     "type": "git",
