@@ -66,9 +66,5 @@ module.exports = async function (input, output) {
         })
       }
     })
-
-    rl.on('close', function () {
-      console.log(`Created "${rl.output.path}"`)
-    })
   })
 }
