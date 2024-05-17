@@ -12,9 +12,9 @@ const output = process.argv[3] || input.replace(/\.csv$/, '.json')
 console.log({ input, output })
 
 async function main() {
-  console.time('Processing')
+  console.time('CSVStrom :: Processing')
   await csvstrom(input, output)
-  console.timeEnd('Processing')
+  console.timeEnd('CSVStrom :: Processing')
 }
 
 main()
