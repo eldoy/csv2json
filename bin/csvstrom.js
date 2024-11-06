@@ -4,7 +4,7 @@ var csvstrom = require('../index.js')
 var input = process.argv[2]
 
 if (!input) {
-  console.log(['Usage:', 'csvstrom input.csv [output.csv]'].join('\n'))
+  console.log(['Usage:', 'csvstrom input.csv [output.json]'].join('\n'))
   process.exit(0)
 }
 
